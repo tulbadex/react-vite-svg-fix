@@ -10,7 +10,6 @@ function App() {
     <BrowserRouter>
     <Routes>
      <Route path='/' element ={<Header />} />
-     <Route path='/' element ={<Figure />} />
     </Routes>
     </BrowserRouter>
     
