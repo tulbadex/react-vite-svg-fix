@@ -1,17 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function Word({ selectedWord, correctLetters }) {
+function Word({ selectedWord, correctLetters, onLetterChange }) {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    setInputValue(value);
+    onLetterChange(value); // Notify parent component of letter input
+  };
+
   return (
     <div className="word">
-      {selectedWord.split('').map( (letter, i) => {
+      {selectedWord.split('').map((letter, i) => {
         return (
           <span className="letter" key={i}>
-          {correctLetters.includes(letter) ? letter : ''}
-        </span>
-        )
+            {correctLetters.includes(letter) ? letter : ''}
+          </span>
+        );
       })}
+    <input
+      className="phone"
+      type="text"
+      value={inputValue}
+      onChange={handleInputChange}
+      maxLength={1} // Limit input to one character
+      autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="off"
+      spellCheck="false"
+    />
     </div>
-  )
+  );
 }
 
-export default Word
+export default Word;
+
