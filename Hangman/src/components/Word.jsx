@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-function Word({ selectedWord, correctLetters, onLetterChange }) {
+function Word({ selectedWord, correctLetters }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event) => {
     const { value } = event.target;
     setInputValue(value);
-    onLetterChange(value); // Notify parent component of letter input
+    // onLetterChange(value); // Notify parent component of letter input
   };
 
   return (
